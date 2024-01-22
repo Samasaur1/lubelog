@@ -13,6 +13,10 @@ buildDotnetModule rec {
   # dotnet-runtime = dotnetCorePackages.runtime_8_0;
   dotnet-runtime = dotnetCorePackages.aspnetcore_8_0;
 
+  makeWrapperArgs = [
+    "--set DOTNET_CONTENTROOT ${placeholder "out"}/lib/lubelog"
+  ];
+
   executables = [ "CarCareTracker" ]; # This wraps "$out/lib/$pname/foo" to `$out/bin/foo`.
 
   packNupkg = true; # This packs the project as "foo-0.1.nupkg" at `$out/share`.
